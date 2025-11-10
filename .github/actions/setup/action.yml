@@ -1,0 +1,45 @@
+name: Setup
+
+inputs:
+  install-gnome-extensions-tool:
+    description: 'Whether to install the gnome extensions tool'
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v5
+      with:
+        submodules: true
+
+    - name: Install Pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: latest
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: latest
+        cache: pnpm
+
+    - name: Install Dependencies
+      shell: bash
+      run: pnpm install --ignore-scripts
+
+    - name: Install Gnome Extensions Tool Dependencies
+      if: inputs.build-gnome-extensions-tool == 'true'
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y meson gettext python3-docutils libglib2.0-dev libgnome-autoar-0-dev libjson-glib-dev libsoup-3.0-dev
+
+    - name: Install Gnome Extensions Tool
+      if: inputs.build-gnome-extensions-tool == 'true'
+      shell: bash
+      working-directory: ./submodules/gnome-shell/subprojects/extensions-tool
+      run: |
+        ./generate-translations.sh
+        meson setup build
+        meson compile -C build
+        meson install -C build

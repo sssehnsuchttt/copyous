@@ -1,0 +1,43 @@
+name: Release CI
+
+env:
+  UUID: copyous@boerdereinar.dev
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: ./.github/actions/setup
+        with:
+          install-gnome-extensions-tool: 'true'
+
+      - name: Check Version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "PRERELEASE=$([[ $VERSION == *-* ]] && echo true || echo false)" >> $GITHUB_ENV
+
+      - name: Build
+        run: RELEASE=1 make build
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.UUID }}.zip
+          prerelease: ${{ env.PRERELEASE }}
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+
+      - name: Publish Release
+        run: gnome-extensions upload -u "$GNOME_USER" -p "$GNOME_PASSWORD" --accept-tos dist/${{ env.UUID }}.zip
+        env:
+          GNOME_USER: ${{ secrets.GNOME_USER }}
+          GNOME_PASSWORD: ${{ secrets.GNOME_PASSWORD }}

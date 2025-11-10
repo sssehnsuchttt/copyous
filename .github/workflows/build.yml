@@ -1,0 +1,73 @@
+name: Build CI
+
+on:
+  push:
+    tags-ignore:
+      - '**'
+  pull_request:
+
+env:
+  UUID: copyous@boerdereinar.dev
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: ./.github/actions/setup
+
+      - name: Lint
+        run: make lint
+
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: ./.github/actions/setup
+        with:
+          install-gnome-extensions-tool: 'true'
+
+      - name: Build
+        run: RELEASE=1 make build
+
+      - name: Prepare Artifact
+        run: unzip dist/${{ env.UUID }}.zip -d dist/${{ env.UUID }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.UUID }}
+          path: dist/${{ env.UUID }}/*
+
+  localization:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Gettext
+        run: |
+          sudo apt update
+          sudo apt install -y gettext
+
+      - name: Check Update
+        run: |
+          make check-pot && make check-po && echo "PO_CHANGED=false" >> $GITHUB_ENV || echo "PO_CHANGED=true" >> $GITHUB_ENV
+
+      - name: Update POT
+        if: env.PO_CHANGED
+        run: make pot
+
+      - name: Update PO
+        if: env.PO_CHANGED
+        run: make po
+
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        if: env.PO_CHANGED
+        with:
+          commit_message: 'Update localization'
+          file_pattern: 'resources/po'

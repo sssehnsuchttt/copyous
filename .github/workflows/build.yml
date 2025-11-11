@@ -62,20 +62,21 @@ jobs:
           sudo apt update
           sudo apt install -y gettext
 
-      - name: Check Update
-        run: |
-          make check-pot && make check-po && echo "PO_CHANGED=false" >> $GITHUB_ENV || echo "PO_CHANGED=true" >> $GITHUB_ENV
-
       - name: Update POT
-        if: env.PO_CHANGED
-        run: make pot -B
+        run: |
+          make pot
+          if git show HEAD:resources/po/main.pot | diff -q -I '^"POT-Creation-Date": .*' - resources/po/main.pot; then
+            echo "POT_CHANGED=false" >> $GITHUB_ENV
+          else
+            echo "POT_CHANGED=true" >> $GITHUB_ENV
+          fi
 
       - name: Update PO
-        if: env.PO_CHANGED
-        run: make po -B
+        if: env.POT_CHANGED
+        run: make po
 
       - uses: stefanzweifel/git-auto-commit-action@v7
-        if: env.PO_CHANGED
+        if: env.POT_CHANGED
         with:
           commit_message: 'Update localization'
           file_pattern: 'resources/po'

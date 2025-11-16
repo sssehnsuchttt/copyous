@@ -81,7 +81,7 @@ class QrCode extends St.DrawingArea {
 		const [bytes] = await tmp.load_bytes_async(null);
 		const data = bytes.get_data();
 		if (!data) return;
-		this.ext.clipboardManager?.copyPng(data);
+		this.ext.clipboardManager?.copyPng(data, size, size);
 	}
 
 	private draw(cr: Cairo.Context, width: number, height: number, border: number = 0) {

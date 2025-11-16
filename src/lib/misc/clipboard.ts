@@ -56,6 +56,9 @@ function contentChecksum(content: ClipboardContent): string | null {
 		text: {
 			param_types: [GObject.TYPE_STRING],
 		},
+		image: {
+			param_types: [GObject.TYPE_JSOBJECT, GObject.TYPE_INT, GObject.TYPE_INT],
+		},
 	},
 })
 export class ClipboardManager extends GObject.Object {
@@ -157,10 +160,11 @@ export class ClipboardManager extends GObject.Object {
 		this.pasteContent({ type: ContentType.Text, text: s });
 	}
 
-	public copyPng(data: Uint8Array) {
+	public copyPng(data: Uint8Array, width: number, height: number) {
 		const checksum = GLib.compute_checksum_for_bytes(GLib.ChecksumType.MD5, data);
 		if (!checksum) return;
 		this.copyContent({ type: ContentType.Image, mimetype: 'image/png', data, checksum });
+		this.emit('image', data, width, height);
 	}
 
 	public async pasteEntry(entry: ClipboardEntry) {

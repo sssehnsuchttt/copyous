@@ -1,4 +1,5 @@
 import Cogl from 'gi://Cogl';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import GdkPixbuf from 'gi://GdkPixbuf';
 import Gio from 'gi://Gio';
@@ -11,7 +12,7 @@ import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
 import { ItemType } from '../common/constants.js';
 import { registerClass } from '../common/gjs.js';
 import { Icon } from '../common/icons.js';
-import { normalizeIndentation } from '../ui/components/label.js';
+import { normalizeIndentation, trim } from '../ui/components/label.js';
 import { commonDirectory } from '../ui/items/filesItem.js';
 import { ClipboardEntry } from './db.js';
 
@@ -71,11 +72,46 @@ export class NotificationManager extends GObject.Object {
 		source.addNotification(notification);
 	}
 
+	private createImageContent(pixbuf: GdkPixbuf.Pixbuf): St.ImageContent {
+		const context = global.stage.context.get_backend().get_cogl_context();
+		const pixels = pixbuf.get_pixels();
+		const content = new St.ImageContent({
+			preferred_width: pixbuf.width,
+			preferred_height: pixbuf.height,
+		});
+		content.set_bytes(context, pixels, Cogl.PixelFormat.RGBA_8888, pixbuf.width, pixbuf.height, pixbuf.rowstride);
+		return content;
+	}
+
+	public imageNotification(bytes: GLib.Bytes | Uint8Array, width: number, height: number) {
+		if (!this._settings.get_boolean('send-notification')) return;
+
+		let gicon: Gio.Icon | St.ImageContent;
+		try {
+			const stream = Gio.MemoryInputStream.new_from_bytes(bytes);
+			const pixbuf = GdkPixbuf.Pixbuf.new_from_stream_at_scale(stream, 256, 256, true, null);
+			gicon = this.createImageContent(pixbuf);
+		} catch (error) {
+			this._ext.getLogger().error(error);
+			return;
+		}
+
+		const source = this.source;
+		const notification = new MessageTray.Notification({
+			source,
+			title: _('Copied Image'),
+			body: _('Size: %d×%d px').format(width, height),
+			gicon,
+			isTransient: true,
+		});
+		source.addNotification(notification);
+	}
+
 	public notification(entry: ClipboardEntry) {
 		if (!this._settings.get_boolean('send-notification')) return;
 
 		let title: string;
-		let body = normalizeIndentation(entry.content, 4);
+		let body: string | null = normalizeIndentation(trim(entry.content), 4);
 		let gicon: Gio.Icon | St.ImageContent;
 		switch (entry.type) {
 			case ItemType.Text:
@@ -86,31 +122,22 @@ export class NotificationManager extends GObject.Object {
 				title = _('Copied Code');
 				gicon = Icon.Code.load(this._ext);
 				break;
-			case ItemType.Image:
+			case ItemType.Image: {
+				const file = body.substring('file://'.length);
 				title = _('Copied Image');
-				body = body.substring('file://'.length);
 
 				try {
-					const context = global.stage.context.get_backend().get_cogl_context();
-					const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(body, 256, 256, true);
-					const pixels = pixbuf.get_pixels();
-					const content = new St.ImageContent({
-						preferred_width: pixbuf.width,
-						preferred_height: pixbuf.height,
-					});
-					content.set_bytes(
-						context,
-						pixels,
-						Cogl.PixelFormat.RGBA_8888,
-						pixbuf.width,
-						pixbuf.height,
-						pixbuf.rowstride,
-					);
-					gicon = content;
-				} catch {
-					gicon = Icon.Image.load(this._ext);
+					const [, width, height] = GdkPixbuf.Pixbuf.get_file_info(file);
+					const pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(file, 256, 256, true);
+					gicon = this.createImageContent(pixbuf);
+					body = _('Size: %d×%d px').format(width, height);
+				} catch (error) {
+					this._ext.getLogger().error(error);
+					return;
 				}
+
 				break;
+			}
 			case ItemType.File:
 			case ItemType.Files: {
 				const files = body.split('\n').map((f) => Gio.file_new_for_uri(f));

@@ -108,6 +108,11 @@ export default class CopyousExtension extends Extension {
 			this.notificationManager?.textNotification(text);
 			this.soundManager?.playSound();
 		});
+		this.clipboardManager.connect('image', (_, image: Uint8Array, width: number, height: number) => {
+			this.indicator?.animate();
+			this.notificationManager?.imageNotification(image, width, height);
+			this.soundManager?.playSound();
+		});
 	}
 
 	private async initHljs() {

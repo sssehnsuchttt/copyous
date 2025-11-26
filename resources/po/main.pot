@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Copyous\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-25 22:30+0000\n"
+"POT-Creation-Date: 2025-11-26 16:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,7 +341,7 @@ msgid "Not in Range"
 msgstr ""
 
 #: src/lib/preferences/customization/items/exclusions.ts:90
-#: src/lib/preferences/dependencies/dependencies.ts:208
+#: src/lib/preferences/dependencies/dependencies.ts:203
 #: src/lib/preferences/actions/actionSubMenuDialog.ts:34
 #: src/lib/preferences/actions/actionsPage.ts:27
 #: src/lib/preferences/actions/actionsPage.ts:40
@@ -652,78 +652,78 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:156
-#: src/lib/preferences/dependencies/dependencies.ts:438
+#: src/lib/preferences/dependencies/dependencies.ts:151
+#: src/lib/preferences/dependencies/dependencies.ts:433
 msgid "Highlight.js Not Installed"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:157
+#: src/lib/preferences/dependencies/dependencies.ts:152
 msgid "Highlight.js is required to display syntax highlighted code."
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:161
+#: src/lib/preferences/dependencies/dependencies.ts:156
 msgid "Manual Installation"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:175
+#: src/lib/preferences/dependencies/dependencies.ts:170
 msgid ""
 "You can manually install highlight.js by downloading highlight.min.js from "
 "\"Url\" to \"Install Location\"."
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:192
+#: src/lib/preferences/dependencies/dependencies.ts:187
 msgid "Url"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:201
+#: src/lib/preferences/dependencies/dependencies.ts:196
 msgid "Install Location"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:210
+#: src/lib/preferences/dependencies/dependencies.ts:205
 msgid "Install"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:337
-#: src/lib/preferences/dependencies/dependencies.ts:436
+#: src/lib/preferences/dependencies/dependencies.ts:332
+#: src/lib/preferences/dependencies/dependencies.ts:431
 msgid "Libgda Not Installed"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:339
+#: src/lib/preferences/dependencies/dependencies.ts:334
 msgid ""
 "Libgda is required to store clipboard history between sessions. Install "
 "either libgda 5.0 or 6.0 with SQLite support to use this feature. After "
 "installing libgda you will need to log out or restart your system."
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:343
+#: src/lib/preferences/dependencies/dependencies.ts:338
 msgid "Install Libgda"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:351
-#: src/lib/preferences/dependencies/dependencies.ts:437
+#: src/lib/preferences/dependencies/dependencies.ts:346
+#: src/lib/preferences/dependencies/dependencies.ts:432
 msgid "GSound Not Installed"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:353
+#: src/lib/preferences/dependencies/dependencies.ts:348
 msgid ""
 "GSound is required to play sound effects. Install GSound to use this "
 "feature. After installing GSound you will need to log out or restart your "
 "system."
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:356
+#: src/lib/preferences/dependencies/dependencies.ts:351
 msgid "Install GSound"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:369
+#: src/lib/preferences/dependencies/dependencies.ts:364
 msgid "Starting Highlight.js Download"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:389
+#: src/lib/preferences/dependencies/dependencies.ts:384
 msgid "Successfully Installed Highlight.js"
 msgstr ""
 
-#: src/lib/preferences/dependencies/dependencies.ts:389
+#: src/lib/preferences/dependencies/dependencies.ts:384
 msgid "Error Installing Highlight.js"
 msgstr ""
 

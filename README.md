@@ -115,5 +115,8 @@ gdbus call --session \
 ## Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
 
+## Acknowledgments
+Copyous is a full rewrite of [Pano](https://github.com/oae/gnome-shell-pano).
+
 ## License
 This project is licensed under the **GNU General Public License 3 or Later**.

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Copyous\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 02:45+0000\n"
+"POT-Creation-Date: 2025-11-30 18:36+0000\n"
 "PO-Revision-Date: 2025-11-29 19:52+0100\n"
 "Last-Translator: Philippe Charlanes\n"
 "Language-Team: \n"
@@ -215,85 +215,6 @@ msgstr "Hauteur"
 #: src/lib/preferences/customization/dialogCustomization.ts:209
 msgid "Change the height of the clipboard dialog"
 msgstr "Modifie la hauteur de la boîte de dialogue du presse-papiers"
-
-#: src/lib/preferences/customization/themeCustomization.ts:69
-#: src/lib/preferences/customization/themeCustomization.ts:73
-msgid "Theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:74
-msgid "Set the preferred theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-msgid "System"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/themeCustomization.ts:90
-msgid "Dark"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/themeCustomization.ts:90
-#, fuzzy
-msgid "Light"
-msgstr "Droite"
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/profiles.ts:200
-msgid "Custom"
-msgstr "Personnalisé"
-
-#: src/lib/preferences/customization/themeCustomization.ts:88
-#, fuzzy
-msgid "Color Scheme"
-msgstr "Espace de couleur"
-
-#: src/lib/preferences/customization/themeCustomization.ts:89
-msgid "Set the color scheme of the custom theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:96
-#, fuzzy
-msgid "Background Color"
-msgstr "Taille de l'arrière-plan"
-
-#: src/lib/preferences/customization/themeCustomization.ts:97
-#, fuzzy
-msgid "Set the background color of the clipboard dialog"
-msgstr ""
-"Sélectionnez la position horizontale de la boîte de dialogue du presse-"
-"papiers"
-
-#: src/lib/preferences/customization/themeCustomization.ts:103
-#, fuzzy
-msgid "Text Color"
-msgstr "Couleur"
-
-#: src/lib/preferences/customization/themeCustomization.ts:104
-#, fuzzy
-msgid "Set the text color of the clipboard dialog"
-msgstr "Sélectionnez l'orientation de la boîte de dialogue du presse-papiers"
-
-#: src/lib/preferences/customization/themeCustomization.ts:110
-#, fuzzy
-msgid "Item Color"
-msgstr "Couleur"
-
-#: src/lib/preferences/customization/themeCustomization.ts:111
-#, fuzzy
-msgid "Set the background color of clipboard items"
-msgstr "Modifie la largeur des éléments du presse-papiers"
-
-#: src/lib/preferences/customization/themeCustomization.ts:117
-#, fuzzy
-msgid "Search Color"
-msgstr "Recherche"
-
-#: src/lib/preferences/customization/themeCustomization.ts:118
-msgid "Set the background color of the search bar"
-msgstr ""
 
 #: src/lib/preferences/customization/items/textItemCustomization.ts:15
 msgid "Text Item"
@@ -746,6 +667,10 @@ msgstr "Par défaut"
 #: src/lib/preferences/customization/profiles.ts:194
 msgid "Compact"
 msgstr "Compact"
+
+#: src/lib/preferences/customization/profiles.ts:200
+msgid "Custom"
+msgstr "Personnalisé"
 
 #: src/lib/preferences/dependencies/dependencies.ts:151
 #: src/lib/preferences/dependencies/dependencies.ts:433
@@ -1826,14 +1751,14 @@ msgstr "Coller comme chemin"
 msgid "Convert"
 msgstr "Convertir"
 
-#: src/prefs.ts:70
+#: src/prefs.ts:69
 msgid "General"
 msgstr "Général"
 
-#: src/prefs.ts:92
+#: src/prefs.ts:91
 msgid "Customization"
 msgstr "Personnalisation"
 
-#: src/prefs.ts:109
+#: src/prefs.ts:107
 msgid "Shortcuts"
 msgstr "Raccourcis"

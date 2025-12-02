@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Copyous\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 02:45+0000\n"
+"POT-Creation-Date: 2025-11-30 18:36+0000\n"
 "PO-Revision-Date: 2025-11-30 20:29+0700\n"
 "Last-Translator: Victor <firephantom303@gmail.com>\n"
 "Language-Team: Russian\n"
@@ -207,83 +207,6 @@ msgstr "Высота"
 #: src/lib/preferences/customization/dialogCustomization.ts:209
 msgid "Change the height of the clipboard dialog"
 msgstr "Изменить высоту диалогового окна буфера обмена"
-
-#: src/lib/preferences/customization/themeCustomization.ts:69
-#: src/lib/preferences/customization/themeCustomization.ts:73
-msgid "Theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:74
-msgid "Set the preferred theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-msgid "System"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/themeCustomization.ts:90
-msgid "Dark"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/themeCustomization.ts:90
-#, fuzzy
-msgid "Light"
-msgstr "Справа"
-
-#: src/lib/preferences/customization/themeCustomization.ts:75
-#: src/lib/preferences/customization/profiles.ts:200
-msgid "Custom"
-msgstr "Пользовательский"
-
-#: src/lib/preferences/customization/themeCustomization.ts:88
-#, fuzzy
-msgid "Color Scheme"
-msgstr "Цветовое пространство"
-
-#: src/lib/preferences/customization/themeCustomization.ts:89
-msgid "Set the color scheme of the custom theme"
-msgstr ""
-
-#: src/lib/preferences/customization/themeCustomization.ts:96
-#, fuzzy
-msgid "Background Color"
-msgstr "Размер фона"
-
-#: src/lib/preferences/customization/themeCustomization.ts:97
-#, fuzzy
-msgid "Set the background color of the clipboard dialog"
-msgstr "Выбрать горизонтальное положение диалогового окна буфера обмена"
-
-#: src/lib/preferences/customization/themeCustomization.ts:103
-#, fuzzy
-msgid "Text Color"
-msgstr "Цвет"
-
-#: src/lib/preferences/customization/themeCustomization.ts:104
-#, fuzzy
-msgid "Set the text color of the clipboard dialog"
-msgstr "Выбрать ориентацию диалогового окна буфера обмена"
-
-#: src/lib/preferences/customization/themeCustomization.ts:110
-#, fuzzy
-msgid "Item Color"
-msgstr "Цвет"
-
-#: src/lib/preferences/customization/themeCustomization.ts:111
-#, fuzzy
-msgid "Set the background color of clipboard items"
-msgstr "Изменить ширину элементов буфера обмена"
-
-#: src/lib/preferences/customization/themeCustomization.ts:117
-#, fuzzy
-msgid "Search Color"
-msgstr "Поиск"
-
-#: src/lib/preferences/customization/themeCustomization.ts:118
-msgid "Set the background color of the search bar"
-msgstr ""
 
 #: src/lib/preferences/customization/items/textItemCustomization.ts:15
 msgid "Text Item"
@@ -730,6 +653,10 @@ msgstr "По умолчанию"
 #: src/lib/preferences/customization/profiles.ts:194
 msgid "Compact"
 msgstr "Компактный"
+
+#: src/lib/preferences/customization/profiles.ts:200
+msgid "Custom"
+msgstr "Пользовательский"
 
 #: src/lib/preferences/dependencies/dependencies.ts:151
 #: src/lib/preferences/dependencies/dependencies.ts:433
@@ -1794,14 +1721,14 @@ msgstr "Вставить как путь"
 msgid "Convert"
 msgstr "Преобразовать"
 
-#: src/prefs.ts:70
+#: src/prefs.ts:69
 msgid "General"
 msgstr "Общие"
 
-#: src/prefs.ts:92
+#: src/prefs.ts:91
 msgid "Customization"
 msgstr "Настройка вида"
 
-#: src/prefs.ts:109
+#: src/prefs.ts:107
 msgid "Shortcuts"
 msgstr "Сочетания клавиш"
